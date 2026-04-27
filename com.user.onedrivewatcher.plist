@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.user.onedrivewatcher</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>$HOME/onedrive-guardian.sh</string>
+    </array>
+
+    <!-- Always run the guardian script if it's not running -->
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Heartbeat: run every 5 minutes to catch sleep/wake failures -->
+    <key>StartInterval</key>
+    <integer>300</integer>
+
+    <!-- Run immediately at login -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Logging -->
+    <key>StandardOutPath</key>
+    <string>/tmp/onedrivewatcher.out</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/onedrivewatcher.err</string>
+</dict>
+</plist>
