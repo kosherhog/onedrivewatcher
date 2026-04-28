@@ -16,7 +16,7 @@
 
     <!-- Heartbeat: run every 5 minutes to catch sleep/wake failures -->
     <key>StartInterval</key>
-    <integer>300</integer>
+    <integer>30</integer>
 
     <!-- Run immediately at login -->
     <key>RunAtLoad</key>
