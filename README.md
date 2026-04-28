@@ -12,4 +12,6 @@ launchctl unload ~/Library/LaunchAgents/com.user.onedrivewatcher.plist 2>/dev/nu
 
 launchctl load ~/Library/LaunchAgents/com.user.onedrivewatcher.plist
 
+launchctl list | grep onedrivewatcher
+
 ````
