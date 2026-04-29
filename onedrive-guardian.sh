@@ -8,17 +8,29 @@ SETTINGS_DIR="$HOME/Library/Containers/com.microsoft.OneDrive-mac/Data/Library/A
 
 # 1. If OneDrive is already running, do nothing
 if pgrep -x "OneDrive" >/dev/null 2>&1; then
+#    echo "OneDrive already running, exiting."
     exit 0
 fi
 
-# 2. Find and remove any lock-like files
-LOCKFILES=$(find "$SETTINGS_DIR" -type f \( -iname "*instance*" -o -iname "*lock*" -o -iname "*.dat" \) 2>/dev/null)
+echo "OneDrive not running. Checking for lockfiles..."
 
+# 2. Find lockfiles (your system uses LockInstance_*)
+LOCKFILES=$(find "$SETTINGS_DIR" -type f -name "LockInstance_*" 2>/dev/null)
+
+# Log what we found
+echo "Found lockfiles:"
+echo "$LOCKFILES"
+
+# 3. Remove lockfiles if any
 if [ -n "$LOCKFILES" ]; then
     echo "$LOCKFILES" | while read -r file; do
+        echo "Removing: $file"
         rm -f "$file"
     done
+else
+    echo "No lockfiles found."
 fi
 
-# 3. Launch OneDrive
+# 4. Launch OneDrive
+echo "Launching OneDrive..."
 open -a "OneDrive"

@@ -7,7 +7,7 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>$HOME/onedrive-guardian.sh</string>
+        <string>/Users/jbk/onedrive-guardian.sh</string>
     </array>
 
     <!-- Always run the guardian script if it's not running -->
