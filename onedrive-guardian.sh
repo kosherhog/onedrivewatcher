@@ -12,17 +12,15 @@ if pgrep -x "OneDrive" >/dev/null 2>&1; then
     exit 0
 fi
 
-echo "OneDrive not running. Checking for lockfiles..."
+echo "$(date '+%Y-%m-%d %H:%M:%S') - OneDrive not running, checking for lockfiles ..." 
 
 # 2. Find lockfiles (your system uses LockInstance_*)
 LOCKFILES=$(find "$SETTINGS_DIR" -type f -name "LockInstance_*" 2>/dev/null)
 
-# Log what we found
-echo "Found lockfiles:"
-echo "$LOCKFILES"
-
 # 3. Remove lockfiles if any
 if [ -n "$LOCKFILES" ]; then
+    # Log what we found
+    echo "Found lockfiles:"
     echo "$LOCKFILES" | while read -r file; do
         echo "Removing: $file"
         rm -f "$file"
